@@ -2,6 +2,7 @@ document.getElementById("add-iframe-then-remove").onclick = async () => {
   const iframe = document.createElement("iframe");
   iframe.id = "iframe";
   iframe.style.height = "400px";
+  iframe.style.backgroundColor = "lightgrey";
   iframe.srcdoc = `
           <!DOCTYPE html>
           <html>
@@ -17,6 +18,10 @@ document.getElementById("add-iframe-then-remove").onclick = async () => {
     console.log("unload event fired");
   });
   await wait(100);
+  console.log(
+    "before iframe removed: iframeContentWindow.closed:",
+    iframeContentWindow.closed
+  );
   document.getElementById("main").textContent = "";
   console.log(
     "after iframe removed: iframeContentWindow.closed:",
